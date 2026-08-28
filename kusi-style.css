@@ -1008,6 +1008,8 @@
 #top .sample-track,#top .work-image-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px;scrollbar-width:none;-ms-overflow-style:none}
 #top .sample-track::-webkit-scrollbar,#top .work-image-track::-webkit-scrollbar{display:none;width:0;height:0}
 #top .sample-track>.public-image-frame,#top .work-image-track>.public-image-frame{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+#top .sample-track>.public-image-frame{aspect-ratio:1/1;min-height:0}
+#top .sample-track>.public-image-frame img{object-fit:contain;background:#fff}
 #top #adopt{border-radius:36px!important}
 #top .public-adopt-list{display:grid;gap:18px}
 #top .public-adopt-card{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(230px,.95fr);gap:22px;align-items:center;border-radius:27px}
