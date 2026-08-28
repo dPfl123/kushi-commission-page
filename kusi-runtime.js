@@ -261,27 +261,80 @@ const form = document.getElementById("commissionForm");
         if (!summary || !answer) return;
         summary.removeAttribute("contenteditable");
         answer.removeAttribute("contenteditable");
-        answer.style.display = "none";
+        answer.style.display = "block";
+        answer.style.maxHeight = "0px";
+        answer.style.opacity = "0";
         item.removeAttribute("open");
+        item.classList.remove("is-open");
         summary.setAttribute("role", "button");
         summary.setAttribute("aria-expanded", "false");
         summary.addEventListener("click", (event) => {
           event.preventDefault();
-          const shouldOpen = answer.style.display === "none";
+          const shouldOpen = !item.classList.contains("is-open");
           document.querySelectorAll("#faq details.faq-item").forEach((other) => {
             const otherAnswer = other.querySelector(".faq-answer");
             const otherSummary = other.querySelector("summary");
             other.removeAttribute("open");
-            if (otherAnswer) otherAnswer.style.display = "none";
+            other.classList.remove("is-open");
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = "0px";
+              otherAnswer.style.opacity = "0";
+            }
             if (otherSummary) otherSummary.setAttribute("aria-expanded", "false");
           });
           if (shouldOpen) {
             item.setAttribute("open", "");
-            answer.style.display = "block";
+            item.classList.add("is-open");
+            requestAnimationFrame(() => {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+              answer.style.opacity = "1";
+            });
             summary.setAttribute("aria-expanded", "true");
           }
         });
       });
+
+      // Soft cursor aura and click sparkles for the public presentation.
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) return;
+        const aura = document.createElement("div");
+        aura.className = "kusi-cursor-aura";
+        document.body.append(aura);
+        let auraFrame = 0;
+        let pointerX = 0;
+        let pointerY = 0;
+        document.addEventListener("pointermove", (event) => {
+          if (event.pointerType && event.pointerType !== "mouse") return;
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+          aura.style.opacity = ".9";
+          if (auraFrame) return;
+          auraFrame = requestAnimationFrame(() => {
+            aura.style.transform = `translate3d(${pointerX - 95}px,${pointerY - 95}px,0)`;
+            auraFrame = 0;
+          });
+        }, { passive: true });
+        document.documentElement.addEventListener("mouseleave", () => (aura.style.opacity = "0"));
+        document.addEventListener("click", (event) => {
+          for (let index = 0; index < 9; index += 1) {
+            const spark = document.createElement("i");
+            const angle = (Math.PI * 2 * index) / 9 + Math.random() * .28;
+            const distance = 24 + Math.random() * 42;
+            spark.className = "kusi-spark";
+            spark.style.left = event.clientX + "px";
+            spark.style.top = event.clientY + "px";
+            spark.style.setProperty("--spark-x", Math.cos(angle) * distance + "px");
+            spark.style.setProperty("--spark-y", Math.sin(angle) * distance + "px");
+            spark.style.animationDelay = index * 12 + "ms";
+            document.body.append(spark);
+            spark.addEventListener("animationend", () => spark.remove(), { once: true });
+          }
+        });
+        document.querySelectorAll('.partner-link[aria-disabled="true"]').forEach((link) => {
+          link.addEventListener("click", (event) => event.preventDefault());
+        });
+      })();
       const pageRoot =
         document.getElementById("kusiPage") ||
         document.querySelector("#top > main");
