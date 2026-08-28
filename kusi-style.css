@@ -1003,10 +1003,14 @@
 @media(prefers-reduced-motion:reduce){.kusi-cursor-aura,.kusi-spark{display:none!important}#top .faq-answer{transition:none!important}}
 
 /* Public sample and original-work galleries */
-#top .public-sample-grid,#top .public-adopt-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px;scrollbar-width:none;-ms-overflow-style:none}
-#top .public-sample-grid::-webkit-scrollbar,#top .public-adopt-grid::-webkit-scrollbar{display:none;width:0;height:0}
+#top .public-sample-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#top .sample-category{min-width:0}
+#top .sample-track,#top .public-adopt-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px;scrollbar-width:none;-ms-overflow-style:none}
+#top .sample-track::-webkit-scrollbar,#top .public-adopt-grid::-webkit-scrollbar{display:none;width:0;height:0}
 #top .public-sample-card{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
 #top .public-adopt-card{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+#top #adopt{border-radius:36px!important}
+#top #adopt .public-adopt-grid{border-radius:27px}
 #top .public-sample-card,#top .public-adopt-card{overflow:hidden;padding:16px;border:1px solid rgba(237,153,188,.42);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(255,231,241,.6));box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -3px -3px 9px rgba(197,91,136,.08),0 16px 36px rgba(168,69,112,.11);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
 #top .gallery-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin:13px 0 0}
 #top .gallery-controls p{margin:0;color:#a17f90;font-size:12px}
@@ -1027,7 +1031,7 @@
 #top .work-status.available{color:#9d4f73;background:linear-gradient(145deg,#fff,#ffe1ee)}
 #top .work-status.sold{color:#9b8a92;border-color:#ded1d7;background:#f4f1f2}
 @media(hover:hover){#top .public-sample-card:hover,#top .public-adopt-card:hover{transform:translateY(-5px);border-color:#e797b8;box-shadow:inset 1px 1px 0 #fff,0 22px 44px rgba(168,69,112,.16)}}
-@media(max-width:680px){#top .public-sample-card,#top .public-adopt-card{flex-basis:100%}#top .public-image-frame{min-height:230px}}
+@media(max-width:680px){#top .public-sample-grid{grid-template-columns:1fr}#top .public-sample-card,#top .public-adopt-card{flex-basis:100%}#top .public-image-frame{min-height:230px}}
 
 /* Artist introduction inspired by the reference page's hero composition */
 #top .kusi-artist-intro{grid-template-columns:minmax(220px,34%) 1fr!important;gap:30px!important;padding:24px!important;overflow:hidden}

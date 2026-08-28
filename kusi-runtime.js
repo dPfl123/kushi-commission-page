@@ -592,9 +592,10 @@ const form = document.getElementById("commissionForm");
       document.querySelectorAll(".horizontal-gallery").forEach((gallery) => {
         const section = gallery.closest("section");
         if (!section) return;
-        const controls = section.querySelector(".gallery-controls");
-        const previous = section.querySelector(".gallery-prev");
-        const next = section.querySelector(".gallery-next");
+        const controlScope = gallery.closest(".sample-category") || section;
+        const controls = controlScope.querySelector(".gallery-controls");
+        const previous = controlScope.querySelector(".gallery-prev");
+        const next = controlScope.querySelector(".gallery-next");
         const total = gallery.children.length;
         const counter = document.createElement("span");
         counter.className = "gallery-counter";
