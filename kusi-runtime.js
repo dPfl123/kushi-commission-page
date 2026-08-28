@@ -513,6 +513,66 @@ const form = document.getElementById("commissionForm");
       window.addEventListener("resize", applyKusiResponsiveLayout);
       calculate();
 
+      const creatorCard = document.querySelector("#creator .creator-card");
+      if (creatorCard) {
+        creatorCard.classList.add("kusi-artist-intro");
+        creatorCard.innerHTML = `
+          <div class="creator-visual" aria-label="Kusi 대표 이미지 영역">
+            <span>KUSI<small>ARTIST</small></span>
+          </div>
+          <div class="creator-intro-copy">
+            <p class="creator-greeting">HELLO, I'M</p>
+            <h3>Kusi</h3>
+            <p>안녕하세요, 3D 버츄얼 얼굴과 렌즈 원화를 작업하는 Kusi입니다. 캐릭터 고유의 분위기와 매력이 또렷하게 보이도록 한 장 한 장 정성껏 작업하겠습니다.</p>
+            <div class="creator-tags"><span>HEAD ART</span><span>LENS ART</span><span>7–10 DAYS</span></div>
+            <div class="creator-slots" aria-label="작업 슬롯"><b>작업 슬롯</b><span class="slot open">OPEN</span><span class="slot open">OPEN</span><span class="slot closed">CLOSED</span></div>
+          </div>`;
+      }
+
+      document.querySelectorAll(".partner-portrait").forEach((portrait) => {
+        portrait.classList.add("profile-photo-slot");
+        portrait.title = "1:1 비율의 프로필 사진을 넣는 영역입니다.";
+      });
+
+      const applicationForm = document.getElementById("commissionForm");
+      if (applicationForm && !document.getElementById("applicationPriceGuide")) {
+        const priceGuide = document.createElement("div");
+        priceGuide.id = "applicationPriceGuide";
+        priceGuide.className = "application-price-guide";
+        priceGuide.innerHTML = `
+          <div class="application-price-title"><b>신청 가격표</b><span>선택한 금액은 아래 예상 견적에 자동 합산됩니다.</span></div>
+          <div class="application-price-row"><span>기본 세트</span><b>고급 헤드 원화 + 렌즈</b><strong>80,000원</strong></div>
+          <div class="application-price-row"><span>기본 세트</span><b>오마카세 헤드 원화 + 렌즈</b><strong>90,000원</strong></div>
+          <div class="application-price-row"><span>단일 구성</span><b>고급 헤드 원화 PNG</b><strong>50,000원</strong></div>
+          <div class="application-price-row"><span>단일 구성</span><b>오마카세 헤드 원화 PNG</b><strong>55,000원</strong></div>
+          <div class="application-price-row"><span>단일 구성</span><b>렌즈 PSD</b><strong>50,000원</strong></div>
+          <div class="application-price-row"><span>단일 구성</span><b>렌즈 PNG</b><strong>40,000원</strong></div>
+          <div class="application-price-row"><span>추가금</span><b>컨펌 추가</b><strong>회당 3,000원</strong></div>
+          <div class="application-price-row"><span>추가금</span><b>퀄리티 업</b><strong>20,000원</strong></div>
+          <div class="application-price-row"><span>비공개</span><b>일주일 / 한 달 / 영구</b><strong>5,000 / 10,000 / 50,000원</strong></div>`;
+        applicationForm.before(priceGuide);
+      }
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+        );
+        reveals.forEach((element, index) => {
+          element.style.setProperty("--reveal-delay", `${(index % 3) * 70}ms`);
+          revealObserver.observe(element);
+        });
+      } else {
+        reveals.forEach((element) => element.classList.add("is-visible"));
+      }
+
       document.querySelectorAll(".horizontal-gallery").forEach((gallery) => {
         const section = gallery.closest("section");
         if (!section) return;

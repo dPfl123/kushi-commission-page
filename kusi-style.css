@@ -1027,3 +1027,42 @@
 #top .work-status.sold{color:#9b8a92;border-color:#ded1d7;background:#f4f1f2}
 @media(hover:hover){#top .public-sample-card:hover,#top .public-adopt-card:hover{transform:translateY(-5px);border-color:#e797b8;box-shadow:inset 1px 1px 0 #fff,0 22px 44px rgba(168,69,112,.16)}}
 @media(max-width:680px){#top .public-sample-card{flex-basis:88%}#top .public-adopt-card{flex-basis:100%}#top .public-image-frame{min-height:230px}#top .gallery-controls p{max-width:65%}}
+
+/* Artist introduction inspired by the reference page's hero composition */
+#top .kusi-artist-intro{grid-template-columns:minmax(220px,34%) 1fr!important;gap:30px!important;padding:24px!important;overflow:hidden}
+#top .creator-visual{position:relative;display:grid;min-height:310px;place-items:center;overflow:hidden;border:1px solid rgba(232,137,177,.5);border-radius:24px;background:linear-gradient(150deg,#fff 0%,#ffe5f0 48%,#f8cadd 100%);box-shadow:inset 2px 2px 0 #fff,inset -8px -8px 24px rgba(186,72,120,.1),0 18px 34px rgba(175,72,117,.12)}
+#top .creator-visual::before{position:absolute;width:190px;height:190px;border:1px solid rgba(206,94,142,.16);border-radius:48% 52% 57% 43%;background:rgba(255,255,255,.35);animation:kusiFloatShape 7s ease-in-out infinite;content:""}
+#top .creator-visual span{position:relative;color:#a95076;text-align:center;font-size:35px;font-weight:800;line-height:1;letter-spacing:.12em}
+#top .creator-visual small{display:block;margin-top:11px;color:#c6819e;font-size:10px;letter-spacing:.34em}
+#top .creator-intro-copy{display:flex;flex-direction:column;justify-content:center}
+#top .creator-greeting{margin:0 0 3px!important;color:#cb789c!important;font-size:10px!important;font-weight:800;letter-spacing:.32em}
+#top .creator-intro-copy h3{margin:0 0 13px;color:#6f4055;font-size:40px;line-height:1}
+#top .creator-intro-copy>p:not(.creator-greeting){margin:0;color:#806a75;font-size:13px;line-height:2}
+#top .creator-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+#top .creator-tags span{padding:6px 10px;border:1px solid #efc4d6;border-radius:999px;color:#a9587a;background:rgba(255,255,255,.82);font-size:9px;font-weight:800;letter-spacing:.08em}
+#top .creator-slots{display:flex;align-items:center;gap:7px;margin-top:15px}
+#top .creator-slots b{margin-right:3px;color:#866372;font-size:11px}
+#top .slot{width:47px;padding:5px 0;border-radius:9px;text-align:center;font-size:8px;font-weight:800}
+#top .slot.open{color:#fff;background:#d879a1;box-shadow:0 5px 12px rgba(192,79,127,.18)}
+#top .slot.closed{color:#a7939c;background:#eee8eb}
+@keyframes kusiFloatShape{0%,100%{transform:translate3d(-7px,-5px,0) rotate(-7deg)}50%{transform:translate3d(9px,8px,0) rotate(8deg)}}
+
+/* Square collaboration profile slots */
+#top .partner-portrait.profile-photo-slot{width:100%;min-height:0!important;aspect-ratio:1/1;border-radius:22px}
+#top .partner-portrait.profile-photo-slot::after{position:absolute;right:10px;bottom:10px;padding:4px 7px;border-radius:8px;color:#a95d7d;background:rgba(255,255,255,.82);font-size:8px;letter-spacing:.08em;content:"1 : 1 PHOTO"}
+
+/* Price list inside the application */
+#top .application-price-guide{margin:0 0 20px;overflow:hidden;border:1px solid #efc7d8;border-radius:19px;background:rgba(255,255,255,.7);box-shadow:inset 1px 1px 0 #fff}
+#top .application-price-title{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 17px;background:linear-gradient(100deg,#fbd7e6,#fff)}
+#top .application-price-title b{color:#9d4d70;font-size:13px}
+#top .application-price-title span{color:#a88193;font-size:10px}
+#top .application-price-row{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid rgba(231,177,200,.35);font-size:11px}
+#top .application-price-row span{color:#b27591}
+#top .application-price-row b{color:#735866}
+#top .application-price-row strong{color:#c45f8a;text-align:right}
+
+/* Scroll-triggered reveal, following the reference page's restrained motion */
+#top .reveal{opacity:0!important;transform:translate3d(0,28px,0)!important;animation:none!important;transition:opacity .75s ease var(--reveal-delay,0ms),transform .85s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms)!important}
+#top .reveal.is-visible{opacity:1!important;transform:translate3d(0,0,0)!important}
+@media(max-width:680px){#top .kusi-artist-intro{grid-template-columns:1fr!important}#top .creator-visual{min-height:240px}#top .creator-intro-copy h3{font-size:34px}#top .application-price-title{align-items:flex-start;flex-direction:column}#top .application-price-row{grid-template-columns:72px 1fr}#top .application-price-row strong{grid-column:2;text-align:left}}
+@media(prefers-reduced-motion:reduce){#top .reveal,#top .reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}#top .creator-visual::before{animation:none!important}}
