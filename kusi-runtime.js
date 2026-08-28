@@ -592,7 +592,8 @@ const form = document.getElementById("commissionForm");
       document.querySelectorAll(".horizontal-gallery").forEach((gallery) => {
         const section = gallery.closest("section");
         if (!section) return;
-        const controlScope = gallery.closest(".sample-category") || section;
+        const controlScope =
+          gallery.closest(".sample-category, .work-image-column") || section;
         const controls = controlScope.querySelector(".gallery-controls");
         const previous = controlScope.querySelector(".gallery-prev");
         const next = controlScope.querySelector(".gallery-next");
