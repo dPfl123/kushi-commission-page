@@ -512,4 +512,22 @@ const form = document.getElementById("commissionForm");
       applyKusiResponsiveLayout();
       window.addEventListener("resize", applyKusiResponsiveLayout);
       calculate();
+
+      document.querySelectorAll(".horizontal-gallery").forEach((gallery) => {
+        const section = gallery.closest("section");
+        if (!section) return;
+        const previous = section.querySelector(".gallery-prev");
+        const next = section.querySelector(".gallery-next");
+
+        const move = (direction) => {
+          const firstCard = gallery.firstElementChild;
+          if (!firstCard) return;
+          const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
+          const distance = firstCard.getBoundingClientRect().width + gap;
+          gallery.scrollBy({ left: direction * distance, behavior: "smooth" });
+        };
+
+        previous?.addEventListener("click", () => move(-1));
+        next?.addEventListener("click", () => move(1));
+      });
     

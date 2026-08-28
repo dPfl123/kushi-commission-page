@@ -1003,14 +1003,26 @@
 @media(prefers-reduced-motion:reduce){.kusi-cursor-aura,.kusi-spark{display:none!important}#top .faq-answer{transition:none!important}}
 
 /* Public sample and original-work galleries */
-#top .public-sample-grid,#top .public-adopt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#top .public-sample-grid,#top .public-adopt-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px 3px 14px;scrollbar-width:thin;scrollbar-color:#e9a5c2 transparent}
+#top .public-sample-card{flex:0 0 min(78%,520px);scroll-snap-align:start}
+#top .public-adopt-card{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
 #top .public-sample-card,#top .public-adopt-card{overflow:hidden;padding:16px;border:1px solid rgba(237,153,188,.42);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(255,231,241,.6));box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -3px -3px 9px rgba(197,91,136,.08),0 16px 36px rgba(168,69,112,.11);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+#top .gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:-8px 0 14px}
+#top .gallery-controls p{margin:0;color:#a17f90;font-size:12px}
+#top .gallery-controls>div{display:flex;gap:7px}
+#top .gallery-controls button{display:grid;width:38px;height:38px;padding:0;place-items:center;border:1px solid #efbad0;border-radius:50%;color:#aa557b;background:linear-gradient(145deg,#fff,#ffe7f1);box-shadow:inset 1px 1px 0 #fff,0 6px 15px rgba(190,79,126,.12);font-size:25px;line-height:1;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+#top .gallery-controls button:hover{color:#fff;background:#dc83ad;transform:translateY(-2px)}
+#top .gallery-controls button:active{transform:scale(.92)}
 #top .public-image-frame{position:relative;display:grid;min-height:280px;place-items:center;overflow:hidden;border:1px solid rgba(233,141,179,.48);border-radius:19px;background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,218,234,.65));box-shadow:inset 4px 4px 14px rgba(255,255,255,.96),inset -5px -5px 15px rgba(196,89,135,.1);color:#c26a90;font-size:12px;font-weight:800;letter-spacing:.16em}
 #top .public-image-frame::before{content:"";position:absolute;inset:14px;border:1px dashed rgba(205,91,139,.3);border-radius:14px}
 #top .public-image-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #top .public-card-copy{padding:17px 6px 4px}
 #top .public-card-copy h3{margin:0 0 7px;color:#9e4d70;font-size:17px}
 #top .public-card-copy p{margin:0;color:#876f7b;font-size:12px;line-height:1.8}
-#top .work-status{display:inline-flex;margin-top:12px;padding:6px 10px;border:1px solid #efbcd1;border-radius:999px;color:#ad567b;background:linear-gradient(145deg,#fff,#ffeaf3);font-size:10px;font-weight:800}
+#top .work-sale-info{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding-top:13px;border-top:1px solid rgba(226,145,178,.25)}
+#top .work-price{color:#b34f7a;font-size:18px;letter-spacing:-.03em}
+#top .work-status{display:inline-flex;padding:6px 10px;border:1px solid #efbcd1;border-radius:999px;color:#ad567b;background:linear-gradient(145deg,#fff,#ffeaf3);font-size:10px;font-weight:800}
+#top .work-status.available{color:#9d4f73;background:linear-gradient(145deg,#fff,#ffe1ee)}
+#top .work-status.sold{color:#9b8a92;border-color:#ded1d7;background:#f4f1f2}
 @media(hover:hover){#top .public-sample-card:hover,#top .public-adopt-card:hover{transform:translateY(-5px);border-color:#e797b8;box-shadow:inset 1px 1px 0 #fff,0 22px 44px rgba(168,69,112,.16)}}
-@media(max-width:680px){#top .public-sample-grid,#top .public-adopt-grid{grid-template-columns:1fr}#top .public-image-frame{min-height:230px}}
+@media(max-width:680px){#top .public-sample-card{flex-basis:88%}#top .public-adopt-card{flex-basis:100%}#top .public-image-frame{min-height:230px}#top .gallery-controls p{max-width:65%}}
