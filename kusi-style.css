@@ -2,7 +2,7 @@
       .kusi-menu-title{margin:0 0 8px;color:#c66591;font-size:13px;font-weight:800;text-align:center}
       .kusi-menu a{display:flex;min-height:34px;margin:4px 0;padding:6px 8px;align-items:center;justify-content:center;border:1px solid #f6cada;border-radius:11px;color:#a9577c;background:linear-gradient(180deg,#fff 0%,#fff4f9 100%);text-decoration:none;font-size:12px;font-weight:700;box-sizing:border-box}
       .kusi-menu a:hover{border-color:#efb6ce;color:#c54f83;background:#ffeaf3}
-      @media(max-width:1500px){.kusi-menu{top:auto;right:10px;bottom:10px;left:10px;width:auto;padding:7px;border-radius:16px;display:flex;gap:5px;overflow-x:auto;background:linear-gradient(90deg,#ffd9e9,#fff)}.kusi-menu-title{display:none}.kusi-menu a{min-width:76px;min-height:34px;margin:0;padding:6px;font-size:11px;white-space:nowrap}}
+      @media(max-width:900px){.kusi-menu{top:auto;right:10px;bottom:10px;left:10px;width:auto;padding:7px;border-radius:16px;display:flex;gap:5px;overflow-x:auto;background:linear-gradient(90deg,#ffd9e9,#fff)}.kusi-menu-title{display:none}.kusi-menu a{min-width:76px;min-height:34px;margin:0;padding:6px;font-size:11px;white-space:nowrap}}
       @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;600;700;800&display=swap");
       .kusi-artmug-root {
         --ink: #604b57;
