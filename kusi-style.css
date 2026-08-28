@@ -1142,3 +1142,19 @@
 #top{isolation:isolate}
 #top .kusi-cursor-aura{z-index:0!important;mix-blend-mode:multiply;filter:blur(20px)!important}
 #top .page,#top .kusi-menu{position:relative;z-index:1}
+
+/* Reference-inspired restrained motion: quick reveal, stagger, and gentle lift */
+#top{--kusi-ease:cubic-bezier(.2,.75,.2,1)}
+#top .reveal{opacity:0!important;transform:translate3d(0,22px,0) scale(.995)!important;transition:opacity .52s var(--kusi-ease) var(--reveal-delay,0ms),transform .52s var(--kusi-ease) var(--reveal-delay,0ms)!important}
+#top .reveal.is-visible{opacity:1!important;transform:translate3d(0,0,0) scale(1)!important}
+#top .kusi-motion-item{opacity:0;transform:translate3d(0,16px,0);transition:opacity .46s var(--kusi-ease) var(--item-delay,0ms),transform .46s var(--kusi-ease) var(--item-delay,0ms),box-shadow .25s var(--kusi-ease)}
+#top .kusi-motion-item.is-visible{opacity:1;transform:translate3d(0,0,0)}
+#top .mini:hover,#top .step:hover,#top .price-item:hover,#top .partner-card:hover,#top .public-adopt-card:hover,#top .option-box:hover{transform:translateY(-2px)!important}
+#top .hero.is-visible .kicker,#top .hero.is-visible h1,#top .hero.is-visible>p,#top .hero.is-visible .chips{animation:kusiHeroIn .52s var(--kusi-ease) both}
+#top .hero.is-visible h1{animation-delay:.07s}
+#top .hero.is-visible>p{animation-delay:.14s}
+#top .hero.is-visible .chips{animation-delay:.21s}
+#top .heading i{animation:kusiSoftPulse 1.8s ease-in-out infinite alternate}
+@keyframes kusiHeroIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kusiSoftPulse{from{transform:translateY(0);opacity:.78}to{transform:translateY(-3px);opacity:1}}
+@media(prefers-reduced-motion:reduce){#top .reveal,#top .reveal.is-visible,#top .kusi-motion-item,#top .kusi-motion-item.is-visible{opacity:1!important;transform:none!important;transition:none!important}#top .hero.is-visible .kicker,#top .hero.is-visible h1,#top .hero.is-visible>p,#top .hero.is-visible .chips,#top .heading i{animation:none!important}}

@@ -604,6 +604,14 @@ const form = document.getElementById("commissionForm");
       }
 
       const reveals = document.querySelectorAll(".reveal");
+      const motionItems = document.querySelectorAll(
+        ".mini, .step, .price-item, .partner-card, .sample-category, .public-adopt-card, .option-box, .faq-item, .application-price-row",
+      );
+      motionItems.forEach((element, index) => {
+        element.classList.add("kusi-motion-item");
+        element.style.setProperty("--item-delay", `${(index % 4) * 55}ms`);
+      });
+      const revealTargets = [...reveals, ...motionItems];
       if ("IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver(
           (entries) => {
@@ -615,12 +623,14 @@ const form = document.getElementById("commissionForm");
           },
           { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
         );
-        reveals.forEach((element, index) => {
-          element.style.setProperty("--reveal-delay", `${(index % 3) * 70}ms`);
+        revealTargets.forEach((element, index) => {
+          if (element.classList.contains("reveal")) {
+            element.style.setProperty("--reveal-delay", `${(index % 3) * 55}ms`);
+          }
           revealObserver.observe(element);
         });
       } else {
-        reveals.forEach((element) => element.classList.add("is-visible"));
+        revealTargets.forEach((element) => element.classList.add("is-visible"));
       }
 
       document.querySelector("#price .price-note")?.remove();
