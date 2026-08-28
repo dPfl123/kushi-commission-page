@@ -317,17 +317,17 @@ const form = document.getElementById("commissionForm");
         }, { passive: true });
         document.documentElement.addEventListener("mouseleave", () => (aura.style.opacity = "0"));
         document.addEventListener("click", (event) => {
-          for (let index = 0; index < 18; index += 1) {
+          for (let index = 0; index < 30; index += 1) {
             const spark = document.createElement("i");
-            const angle = (Math.PI * 2 * index) / 18 + Math.random() * .32;
-            const distance = 28 + Math.random() * 58;
+            const angle = (Math.PI * 2 * index) / 30 + Math.random() * .28;
+            const distance = 42 + Math.random() * 82;
             spark.className = "kusi-spark";
             spark.style.left = event.clientX + "px";
             spark.style.top = event.clientY + "px";
             spark.style.setProperty("--spark-x", Math.cos(angle) * distance + "px");
             spark.style.setProperty("--spark-y", Math.sin(angle) * distance + "px");
-            spark.style.setProperty("--spark-size", 4 + Math.random() * 6 + "px");
-            spark.style.animationDelay = index * 7 + "ms";
+            spark.style.setProperty("--spark-size", 7 + Math.random() * 9 + "px");
+            spark.style.animationDelay = index * 4 + "ms";
             document.body.append(spark);
             spark.addEventListener("animationend", () => spark.remove(), { once: true });
           }
@@ -527,7 +527,7 @@ const form = document.getElementById("commissionForm");
         creatorCard.classList.add("kusi-artist-intro");
         creatorCard.innerHTML = `
           <div class="creator-visual" aria-label="Kusi 대표 이미지 영역">
-            <span>KUSI<small>ARTIST</small></span>
+            <img src="assets/partners/kusi-profile.png" alt="Kusi 작가 프로필">
           </div>
           <div class="creator-intro-copy">
             <p class="creator-greeting">HELLO, I'M</p>
@@ -554,6 +554,14 @@ const form = document.getElementById("commissionForm");
         if (detail && index === 1) {
           detail.innerHTML =
             "노랭꼬 작가 <strong>데뷔세트 20,000원 할인</strong> · 쿠시돌이 작가 <strong>원화 20,000원 할인</strong>";
+        }
+        if (index === 0) {
+          const image = document.createElement("img");
+          image.src = "assets/partners/poodol.png";
+          image.alt = "푸돌이님 프로필";
+          portrait.replaceChildren(image);
+          portrait.classList.add("has-photo");
+          portrait.title = "푸돌이님 프로필";
         }
         if (index === 1) {
           const image = document.createElement("img");
