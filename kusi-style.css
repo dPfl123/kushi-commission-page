@@ -997,7 +997,7 @@
 #top .faq-answer{display:block!important;max-height:0;overflow:hidden;opacity:0;padding-top:0!important;padding-bottom:0!important;transition:max-height .46s cubic-bezier(.2,.8,.2,1),opacity .28s ease,padding .35s ease}
 #top .faq-item.is-open .faq-answer{opacity:1;padding-bottom:17px!important}
 .kusi-cursor-aura{position:fixed;left:0;top:0;width:190px;height:190px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(circle,rgba(239,132,177,.2),rgba(255,204,226,.09) 48%,transparent 72%);filter:blur(17px);opacity:0;transform:translate3d(-50%,-50%,0);transition:opacity .25s ease;will-change:transform}
-.kusi-spark{position:fixed;left:0;top:0;width:6px;height:6px;pointer-events:none;z-index:99999;background:linear-gradient(135deg,#fff,#ef7fb0);clip-path:polygon(50% 0,62% 36%,100% 50%,62% 64%,50% 100%,38% 64%,0 50%,38% 36%);animation:kusiSpark .72s ease-out forwards}
+.kusi-spark{position:fixed;left:0;top:0;width:var(--spark-size,7px);height:var(--spark-size,7px);pointer-events:none;z-index:99999;background:#fff;filter:drop-shadow(0 0 3px rgba(255,255,255,.98)) drop-shadow(0 0 7px rgba(255,255,255,.72));clip-path:polygon(50% 0,62% 36%,100% 50%,62% 64%,50% 100%,38% 64%,0 50%,38% 36%);animation:kusiSpark .82s ease-out forwards}
 @keyframes kusiSpark{0%{opacity:1;transform:translate(-50%,-50%) scale(.35) rotate(0)}100%{opacity:0;transform:translate(calc(-50% + var(--spark-x)),calc(-50% + var(--spark-y))) scale(1.2) rotate(150deg)}}
 @media(max-width:620px){#top .partner-card{grid-template-columns:1fr!important}#top .partner-portrait{min-height:190px}.kusi-cursor-aura{display:none}}
 @media(prefers-reduced-motion:reduce){.kusi-cursor-aura,.kusi-spark{display:none!important}#top .faq-answer{transition:none!important}}
