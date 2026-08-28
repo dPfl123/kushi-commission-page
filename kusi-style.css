@@ -1050,6 +1050,8 @@
 /* Square collaboration profile slots */
 #top .partner-portrait.profile-photo-slot{width:100%;min-height:0!important;aspect-ratio:1/1;border-radius:22px}
 #top .partner-portrait.profile-photo-slot::after{position:absolute;right:10px;bottom:10px;padding:4px 7px;border-radius:8px;color:#a95d7d;background:rgba(255,255,255,.82);font-size:8px;letter-spacing:.08em;content:"1 : 1 PHOTO"}
+#top .partner-tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 3px}
+#top .partner-tags span{padding:5px 9px;border:1px solid #efbfd2;border-radius:999px;color:#a85478;background:linear-gradient(145deg,#fff,#ffe8f2);font-size:9px;font-weight:800;line-height:1.4;box-shadow:inset 1px 1px 0 #fff}
 
 /* Price list inside the application */
 #top .application-price-guide{margin:0 0 20px;overflow:hidden;border:1px solid #efc7d8;border-radius:19px;background:rgba(255,255,255,.7);box-shadow:inset 1px 1px 0 #fff}

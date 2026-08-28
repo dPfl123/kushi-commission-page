@@ -525,13 +525,27 @@ const form = document.getElementById("commissionForm");
             <h3>Kusi</h3>
             <p>안녕하세요, 3D 버츄얼 얼굴과 렌즈 원화를 작업하는 Kusi입니다. 캐릭터 고유의 분위기와 매력이 또렷하게 보이도록 한 장 한 장 정성껏 작업하겠습니다.</p>
             <div class="creator-tags"><span>HEAD ART</span><span>LENS ART</span><span>7–10 DAYS</span></div>
-            <div class="creator-slots" aria-label="작업 슬롯"><b>작업 슬롯</b><span class="slot open">OPEN</span><span class="slot open">OPEN</span><span class="slot closed">CLOSED</span></div>
           </div>`;
       }
 
-      document.querySelectorAll(".partner-portrait").forEach((portrait) => {
+      const partnerTags = [
+        ["#쿠시돌이Pick", "#3D버츄얼", "#퀄리티"],
+        ["#친절상담", "#3D버츄얼", "#퀄리티"],
+      ];
+      document.querySelectorAll(".partner-card").forEach((card, index) => {
+        const portrait = card.querySelector(".partner-portrait");
+        if (!portrait) return;
         portrait.classList.add("profile-photo-slot");
         portrait.title = "1:1 비율의 프로필 사진을 넣는 영역입니다.";
+        const copy = card.querySelector(".editable-copy");
+        if (copy && partnerTags[index]) {
+          const tags = document.createElement("div");
+          tags.className = "partner-tags";
+          tags.innerHTML = partnerTags[index]
+            .map((tag) => `<span>${tag}</span>`)
+            .join("");
+          copy.insertBefore(tags, copy.querySelector(".partner-link"));
+        }
       });
 
       const applicationForm = document.getElementById("commissionForm");
