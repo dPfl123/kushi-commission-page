@@ -524,7 +524,6 @@ const form = document.getElementById("commissionForm");
             <p class="creator-greeting">HELLO, I'M</p>
             <h3>Kusi</h3>
             <p>안녕하세요, 3D 버츄얼 얼굴과 렌즈 원화를 작업하는 Kusi입니다. 캐릭터 고유의 분위기와 매력이 또렷하게 보이도록 한 장 한 장 정성껏 작업하겠습니다.</p>
-            <div class="creator-tags"><span>HEAD ART</span><span>LENS ART</span><span>7–10 DAYS</span></div>
           </div>`;
       }
 

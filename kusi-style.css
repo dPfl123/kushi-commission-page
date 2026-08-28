@@ -1038,8 +1038,6 @@
 #top .creator-greeting{margin:0 0 3px!important;color:#cb789c!important;font-size:10px!important;font-weight:800;letter-spacing:.32em}
 #top .creator-intro-copy h3{margin:0 0 13px;color:#6f4055;font-size:40px;line-height:1}
 #top .creator-intro-copy>p:not(.creator-greeting){margin:0;color:#806a75;font-size:13px;line-height:2}
-#top .creator-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
-#top .creator-tags span{padding:6px 10px;border:1px solid #efc4d6;border-radius:999px;color:#a9587a;background:rgba(255,255,255,.82);font-size:9px;font-weight:800;letter-spacing:.08em}
 #top .creator-slots{display:flex;align-items:center;gap:7px;margin-top:15px}
 #top .creator-slots b{margin-right:3px;color:#866372;font-size:11px}
 #top .slot{width:47px;padding:5px 0;border-radius:9px;text-align:center;font-size:8px;font-weight:800}
