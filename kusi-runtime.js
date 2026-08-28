@@ -512,6 +512,14 @@ const form = document.getElementById("commissionForm");
 
       applyKusiResponsiveLayout();
       window.addEventListener("resize", applyKusiResponsiveLayout);
+      if (discountSelect?.options?.length >= 3) {
+        discountSelect.options[1].value = "푸돌이님 원화 추가 할인|-10000";
+        discountSelect.options[1].textContent =
+          "푸돌이님 · 원화 추가 10,000원 할인";
+        discountSelect.options[2].value = "노랭꼬님 원화 할인|-20000";
+        discountSelect.options[2].textContent =
+          "노랭꼬님 · Kusi 원화 20,000원 할인";
+      }
       calculate();
 
       const creatorCard = document.querySelector("#creator .creator-card");
@@ -538,6 +546,15 @@ const form = document.getElementById("commissionForm");
         portrait.classList.add("profile-photo-slot");
         portrait.title = "1:1 비율의 프로필 사진을 넣는 영역입니다.";
         const copy = card.querySelector(".editable-copy");
+        const detail = copy?.querySelectorAll(".static-copy")[2];
+        if (detail && index === 0) {
+          detail.innerHTML =
+            "푸돌이님 추가금에 원화 추가 시 <strong>10,000원 할인</strong>";
+        }
+        if (detail && index === 1) {
+          detail.innerHTML =
+            "노랭꼬 작가 <strong>데뷔세트 20,000원 할인</strong> · 쿠시돌이 작가 <strong>원화 20,000원 할인</strong>";
+        }
         if (index === 1) {
           const image = document.createElement("img");
           image.src = "assets/partners/noraengggo.png";
