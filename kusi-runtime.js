@@ -300,7 +300,7 @@ const form = document.getElementById("commissionForm");
         if (reduceMotion) return;
         const aura = document.createElement("div");
         aura.className = "kusi-cursor-aura";
-        document.body.append(aura);
+        (document.getElementById("top") || document.body).append(aura);
         let auraFrame = 0;
         let pointerX = 0;
         let pointerY = 0;
@@ -308,7 +308,7 @@ const form = document.getElementById("commissionForm");
           if (event.pointerType && event.pointerType !== "mouse") return;
           pointerX = event.clientX;
           pointerY = event.clientY;
-          aura.style.opacity = ".9";
+          aura.style.opacity = ".52";
           if (auraFrame) return;
           auraFrame = requestAnimationFrame(() => {
             aura.style.transform = `translate3d(${pointerX - 95}px,${pointerY - 95}px,0)`;

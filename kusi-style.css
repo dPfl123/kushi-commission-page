@@ -1139,3 +1139,6 @@
 #top .kusi-menu a,#top .nav a,#top .partner-link,#top .gallery-controls button{border:1px solid var(--baby-pink)!important;background:linear-gradient(145deg,#fff,rgba(255,216,236,.42))!important;box-shadow:inset 2px 2px 0 #fff,inset -3px -3px 8px rgba(255,216,236,.72),0 5px 12px rgba(255,216,236,.58)!important}
 #top .kusi-menu a:hover,#top .nav a:hover,#top .partner-link:hover,#top .gallery-controls button:hover{background:var(--baby-pink)!important;box-shadow:inset 2px 2px 0 rgba(255,255,255,.9),inset -3px -3px 8px rgba(255,216,236,.82),0 7px 15px rgba(255,216,236,.82)!important;transform:translateY(-1px)}
 #top button:active,#top .kusi-menu a:active,#top .nav a:active{box-shadow:inset 3px 3px 8px rgba(255,216,236,.9),inset -1px -1px 0 #fff!important;transform:translateY(1px) scale(.99)}
+#top{isolation:isolate}
+#top .kusi-cursor-aura{z-index:0!important;mix-blend-mode:multiply;filter:blur(20px)!important}
+#top .page,#top .kusi-menu{position:relative;z-index:1}
