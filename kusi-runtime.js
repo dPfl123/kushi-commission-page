@@ -538,6 +538,25 @@ const form = document.getElementById("commissionForm");
         portrait.classList.add("profile-photo-slot");
         portrait.title = "1:1 비율의 프로필 사진을 넣는 영역입니다.";
         const copy = card.querySelector(".editable-copy");
+        if (index === 1) {
+          const image = document.createElement("img");
+          image.src = "assets/partners/noraengggo.png";
+          image.alt = "노랭꼬님 프로필";
+          portrait.replaceChildren(image);
+          portrait.classList.add("has-photo");
+          portrait.title = "노랭꼬님 프로필";
+
+          const oldLink = copy?.querySelector(".partner-link");
+          if (oldLink) {
+            const activeLink = oldLink.cloneNode(true);
+            activeLink.href = "https://artmug.kr/index.php?channel=view&uid=49397";
+            activeLink.target = "_blank";
+            activeLink.rel = "noopener noreferrer";
+            activeLink.removeAttribute("aria-disabled");
+            activeLink.title = "노랭꼬님 아트머그 페이지 열기";
+            oldLink.replaceWith(activeLink);
+          }
+        }
         if (copy && partnerTags[index]) {
           const tags = document.createElement("div");
           tags.className = "partner-tags";
