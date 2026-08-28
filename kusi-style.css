@@ -1085,3 +1085,26 @@
 #top{font-family:"Cafe24SsurroundAir","Malgun Gothic",sans-serif!important}
 #top button,#top input,#top textarea,#top select{font-family:inherit!important}
 #top h1,#top h2,#top h3,#top h4,#top strong,#top b,#top button,#top .kusi-menu-title,#top .kusi-menu a,#top .work-status,#top .gallery-counter{font-family:"Cafe24Ssurround","Cafe24SsurroundAir","Malgun Gothic",sans-serif!important;font-weight:400!important}
+
+/* Cool baby-pink palette */
+#top{--cool-ink:#63566f;--cool-muted:#94859f;--cool-pink:#ee8fc7;--cool-deep:#d85c9f;--cool-line:#efcde3;--cool-lilac:#d8c9ff;color:var(--cool-ink)!important;background:radial-gradient(circle at 12% 9%,rgba(255,255,255,.96) 0 8%,transparent 27%),radial-gradient(circle at 90% 22%,rgba(226,210,255,.45) 0 9%,transparent 29%),linear-gradient(145deg,#fff 0%,#fff3fb 48%,#f7efff 100%)!important}
+#top .glass{border-color:rgba(221,145,196,.4)!important;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,241,250,.76) 58%,rgba(245,239,255,.72))!important;box-shadow:inset 1px 1px 0 rgba(255,255,255,.96),0 18px 55px rgba(170,108,183,.13)!important}
+#top .hero{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,230,246,.72),rgba(239,232,255,.72))!important}
+#top .hero::before{background:rgba(232,177,221,.24)!important}
+#top .hero::after{background:rgba(216,201,255,.3)!important}
+#top .hero h1,#top .heading h2{color:#5e4b62!important}
+#top .hero h1 em,#top .heading span,#top .price-title,#top .price-item strong,#top .big-number{color:var(--cool-deep)!important}
+#top .heading i{background:var(--cool-pink)!important;box-shadow:0 0 0 7px rgba(239,199,225,.65)!important}
+#top .chip,#top .mini,#top .step,#top .subcard,#top .price-item,#top .creator-card,#top .partner-card,#top .public-sample-card,#top .public-adopt-card,#top .selected-box,#top .option-box,#top .faq-item{border-color:var(--cool-line)!important;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,239,249,.76),rgba(247,241,255,.68))!important;box-shadow:inset 1px 1px 0 #fff,inset -3px -3px 10px rgba(150,92,166,.07),0 12px 28px rgba(170,98,161,.09)!important}
+#top .public-image-frame,#top .partner-portrait,#top .creator-visual{border-color:rgba(218,128,187,.48)!important;background:linear-gradient(145deg,#fff,rgba(255,222,242,.72),rgba(235,228,255,.7))!important;box-shadow:inset 4px 4px 14px #fff,inset -5px -5px 16px rgba(133,91,170,.1),0 13px 30px rgba(168,86,153,.1)!important}
+#top .highlight,#top .price-note,#top .conditional-field,#top .estimate,#top .application-price-title{border-color:#e8bdd9!important;background:linear-gradient(105deg,#ffe2f3,#f8eeff 60%,#fff)!important}
+#top .field input,#top .field textarea,#top .popup-select,#top .copy-preview textarea,#top .static-copy{border-color:#ebc7df!important;color:#6f6077!important;background:linear-gradient(120deg,#fff,#fff3fa 65%,#f8f3ff)!important}
+#top .option-pill span,#top .selected-chip,#top .work-status,#top .partner-tags span{border-color:#e8b7d5!important;color:#9f4e7d!important;background:linear-gradient(145deg,#fff,#ffe5f4 64%,#f4edff)!important}
+#top .option-pill input:checked + span{border-color:#df6eae!important;color:#fff!important;background:linear-gradient(120deg,#ec8bc4,#d978b7 58%,#bfa7ee)!important;box-shadow:0 8px 18px rgba(185,82,151,.18)!important}
+#top .copy-button,#top .count-option button{color:#fff!important;background:linear-gradient(110deg,#f4a0cf,#df76b5 58%,#bfa8ed)!important;box-shadow:0 10px 24px rgba(184,83,153,.18)!important}
+#top .gallery-controls button,#top .gallery-counter{color:#b35288!important}
+#top .gallery-controls button:hover{color:#e65ba7!important}
+#top .partner-link{color:#a54f80!important;border-color:#e9bad6!important;background:linear-gradient(145deg,#fff,#ffe7f5,#f1ecff)!important}
+#top .creator-visual::before{border-color:rgba(190,101,168,.18)!important;background:rgba(248,237,255,.48)!important}
+#top .slot.open{background:linear-gradient(120deg,#ed8fc6,#c99fe9)!important}
+.kusi-cursor-aura{background:radial-gradient(circle,rgba(224,117,183,.22),rgba(199,178,244,.13) 48%,transparent 72%)!important}
