@@ -1158,3 +1158,17 @@
 @keyframes kusiHeroIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 @keyframes kusiSoftPulse{from{transform:translateY(0);opacity:.78}to{transform:translateY(-3px);opacity:1}}
 @media(prefers-reduced-motion:reduce){#top .reveal,#top .reveal.is-visible,#top .kusi-motion-item,#top .kusi-motion-item.is-visible{opacity:1!important;transform:none!important;transition:none!important}#top .hero.is-visible .kicker,#top .hero.is-visible h1,#top .hero.is-visible>p,#top .hero.is-visible .chips,#top .heading i{animation:none!important}}
+
+/* Heavier, box-safe collaboration typography */
+#top,#top button,#top input,#top textarea,#top select{font-family:"Cafe24Ssurround","Malgun Gothic",sans-serif!important}
+#top h1,#top h2,#top h3,#top h4,#top strong,#top b,#top button,#top .kusi-menu-title,#top .kusi-menu a,#top .work-status,#top .gallery-counter{font-weight:700!important}
+#top .partner-card{min-width:0!important;box-sizing:border-box!important}
+#top .partner-card .editable-copy{min-width:0!important;width:100%!important;box-sizing:border-box!important}
+#top .partner-card .static-copy{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;overflow:hidden!important;overflow-wrap:anywhere!important;word-break:keep-all!important;white-space:normal!important;line-height:1.75!important}
+#top .partner-card .static-copy:first-child{font-size:17px!important;font-weight:700!important}
+#top .partner-card .static-copy:nth-child(2){font-weight:700!important}
+#top .partner-card .static-copy:nth-child(3),#top .partner-card .static-copy:nth-child(3) strong{font-weight:700!important}
+#top .partner-tags{max-width:100%!important}
+#top .partner-tags span{max-width:100%;box-sizing:border-box;font-weight:700!important;overflow-wrap:anywhere}
+#top .partner-link{max-width:100%!important;box-sizing:border-box!important;font-weight:700!important;white-space:normal!important}
+@media(max-width:760px){#top .partner-card{grid-template-columns:1fr!important;padding:14px!important}#top .partner-card .editable-copy{gap:8px!important}#top .partner-card .static-copy{font-size:13px!important}}
