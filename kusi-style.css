@@ -1108,3 +1108,24 @@
 #top .creator-visual::before{border-color:rgba(190,101,168,.18)!important;background:rgba(248,237,255,.48)!important}
 #top .slot.open{background:linear-gradient(120deg,#ed8fc6,#c99fe9)!important}
 .kusi-cursor-aura{background:radial-gradient(circle,rgba(224,117,183,.22),rgba(199,178,244,.13) 48%,transparent 72%)!important}
+
+/* Strict two-color UI: cool baby pink + white, with dark text only */
+#top{--baby-pink:#ffd8ec;--dark-text:#4b3442;color:var(--dark-text)!important;background:linear-gradient(145deg,#fff 0%,#fff 44%,var(--baby-pink) 100%)!important}
+#top .glass,#top .hero,#top .section,#top .mini,#top .step,#top .subcard,#top .price-item,#top .creator-card,#top .partner-card,#top .public-sample-card,#top .public-adopt-card,#top .selected-box,#top .option-box,#top .faq-item,#top .application-price-guide,#top .form-box{border-color:var(--baby-pink)!important;background:linear-gradient(145deg,#fff,rgba(255,216,236,.48))!important;box-shadow:inset 1px 1px 0 #fff,0 16px 38px rgba(255,216,236,.72)!important}
+#top .hero::before,#top .hero::after,#top .creator-visual::before{background:rgba(255,216,236,.62)!important;border-color:var(--baby-pink)!important}
+#top .public-image-frame,#top .partner-portrait,#top .creator-visual{border-color:var(--baby-pink)!important;background:linear-gradient(145deg,#fff,var(--baby-pink))!important;box-shadow:inset 4px 4px 14px #fff,inset -5px -5px 15px rgba(255,216,236,.75),0 12px 28px rgba(255,216,236,.7)!important}
+#top .heading i{background:var(--baby-pink)!important;box-shadow:0 0 0 7px rgba(255,216,236,.55)!important}
+#top .hero h1,#top .hero h1 em,#top .heading h2,#top .heading span,#top h3,#top h4,#top p,#top b,#top strong,#top label,#top legend,#top .price-title,#top .price-item strong,#top .big-number,#top .gallery-counter{color:var(--dark-text)!important}
+#top .chip,#top .highlight,#top .price-note,#top .conditional-field,#top .estimate,#top .application-price-title,#top .application-price-row,#top .work-sale-info{border-color:var(--baby-pink)!important;background:linear-gradient(105deg,var(--baby-pink),#fff)!important;color:var(--dark-text)!important}
+#top .field input,#top .field textarea,#top .popup-select,#top .copy-preview textarea,#top .static-copy,#top .option-pill span,#top .selected-chip,#top .work-status,#top .partner-tags span{border-color:var(--baby-pink)!important;color:var(--dark-text)!important;background:#fff!important;box-shadow:none!important}
+#top .option-pill input:checked + span,#top .copy-button,#top .count-option button,#top .reset-button{border-color:var(--baby-pink)!important;color:var(--dark-text)!important;background:var(--baby-pink)!important;box-shadow:0 8px 18px rgba(255,216,236,.9)!important}
+#top .partner-link,#top .gallery-controls button,#top .selected-chip button{border-color:var(--baby-pink)!important;color:var(--dark-text)!important;background:var(--baby-pink)!important;box-shadow:none!important}
+#top .gallery-controls button:hover,#top .partner-link:hover{color:var(--dark-text)!important;background:#fff!important}
+#top .collab{color:var(--dark-text)!important;background:linear-gradient(120deg,var(--baby-pink),#fff)!important}
+#top .work-status.available,#top .work-status.reserved,#top .work-status.sold{border-color:var(--baby-pink)!important;color:var(--dark-text)!important;background:#fff!important}
+#top,#top#top *{color:var(--dark-text)!important}
+#top .kusi-menu,#top .nav{border-color:var(--baby-pink)!important;background:linear-gradient(180deg,var(--baby-pink),#fff)!important;box-shadow:0 14px 34px rgba(255,216,236,.86)!important}
+#top .kusi-menu a,#top .nav a{border-color:var(--baby-pink)!important;color:var(--dark-text)!important;background:#fff!important}
+#top .kusi-menu a:hover,#top .nav a:hover{color:var(--dark-text)!important;background:var(--baby-pink)!important}
+#top .popup-select-wrap{border-color:var(--baby-pink)!important;background:#fff!important}
+.kusi-cursor-aura{background:radial-gradient(circle,rgba(255,216,236,.72),rgba(255,216,236,.3) 48%,transparent 72%)!important}
