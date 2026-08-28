@@ -586,11 +586,37 @@ const form = document.getElementById("commissionForm");
         reveals.forEach((element) => element.classList.add("is-visible"));
       }
 
+      document.querySelector("#price .price-note")?.remove();
+
       document.querySelectorAll(".horizontal-gallery").forEach((gallery) => {
         const section = gallery.closest("section");
         if (!section) return;
+        const controls = section.querySelector(".gallery-controls");
         const previous = section.querySelector(".gallery-prev");
         const next = section.querySelector(".gallery-next");
+        const total = gallery.children.length;
+        const counter = document.createElement("span");
+        counter.className = "gallery-counter";
+        counter.textContent = `1/${total}`;
+
+        controls?.querySelector("p")?.remove();
+        const buttonGroup = controls?.querySelector("div");
+        if (previous) previous.textContent = "<";
+        if (next) next.textContent = ">";
+        if (buttonGroup && next) buttonGroup.insertBefore(counter, next);
+        if (controls) gallery.after(controls);
+
+        const updateCounter = () => {
+          const firstCard = gallery.firstElementChild;
+          if (!firstCard) return;
+          const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
+          const distance = firstCard.getBoundingClientRect().width + gap;
+          const current = Math.min(
+            total,
+            Math.max(1, Math.round(gallery.scrollLeft / distance) + 1),
+          );
+          counter.textContent = `${current}/${total}`;
+        };
 
         const move = (direction) => {
           const firstCard = gallery.firstElementChild;
@@ -602,5 +628,6 @@ const form = document.getElementById("commissionForm");
 
         previous?.addEventListener("click", () => move(-1));
         next?.addEventListener("click", () => move(1));
+        gallery.addEventListener("scroll", updateCounter, { passive: true });
       });
     
