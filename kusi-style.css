@@ -1003,7 +1003,8 @@
 @media(prefers-reduced-motion:reduce){.kusi-cursor-aura,.kusi-spark{display:none!important}#top .faq-answer{transition:none!important}}
 
 /* Public sample and original-work galleries */
-#top .public-sample-grid,#top .public-adopt-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px 3px 14px;scrollbar-width:thin;scrollbar-color:#e9a5c2 transparent}
+#top .public-sample-grid,#top .public-adopt-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:3px;scrollbar-width:none;-ms-overflow-style:none}
+#top .public-sample-grid::-webkit-scrollbar,#top .public-adopt-grid::-webkit-scrollbar{display:none;width:0;height:0}
 #top .public-sample-card{flex:0 0 min(78%,520px);scroll-snap-align:start}
 #top .public-adopt-card{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
 #top .public-sample-card,#top .public-adopt-card{overflow:hidden;padding:16px;border:1px solid rgba(237,153,188,.42);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(255,231,241,.6));box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -3px -3px 9px rgba(197,91,136,.08),0 16px 36px rgba(168,69,112,.11);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
