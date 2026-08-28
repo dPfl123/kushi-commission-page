@@ -1067,3 +1067,10 @@
 #top .reveal.is-visible{opacity:1!important;transform:translate3d(0,0,0)!important}
 @media(max-width:680px){#top .kusi-artist-intro{grid-template-columns:1fr!important}#top .creator-visual{min-height:240px}#top .creator-intro-copy h3{font-size:34px}#top .application-price-title{align-items:flex-start;flex-direction:column}#top .application-price-row{grid-template-columns:72px 1fr}#top .application-price-row strong{grid-column:2;text-align:left}}
 @media(prefers-reduced-motion:reduce){#top .reveal,#top .reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}#top .creator-visual::before{animation:none!important}}
+
+/* Cafe24 Ssurround typography */
+@font-face{font-family:"Cafe24Ssurround";src:url("https://cdn.jsdelivr.net/gh/webdesignfarm/font/Cafe24Ssurround.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Cafe24SsurroundAir";src:url("https://cdn.jsdelivr.net/gh/webdesignfarm/font/Cafe24SsurroundAir.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+#top{font-family:"Cafe24SsurroundAir","Malgun Gothic",sans-serif!important}
+#top button,#top input,#top textarea,#top select{font-family:inherit!important}
+#top h1,#top h2,#top h3,#top h4,#top strong,#top b,#top button,#top .kusi-menu-title,#top .kusi-menu a,#top .work-status,#top .gallery-counter{font-family:"Cafe24Ssurround","Cafe24SsurroundAir","Malgun Gothic",sans-serif!important;font-weight:400!important}
