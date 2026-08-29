@@ -611,6 +611,39 @@ const form = document.getElementById("commissionForm");
         applicationForm.before(priceGuide);
       }
 
+      if (applicationForm && !applicationForm.classList.contains("quote-layout")) {
+        const applicationSection = applicationForm.closest("#application");
+        const originalFields = [...applicationForm.children];
+        const leftColumn = document.createElement("div");
+        const rightColumn = document.createElement("div");
+        leftColumn.className = "quote-column quote-column-options";
+        rightColumn.className = "quote-column quote-column-details";
+        leftColumn.innerHTML = `
+          <header class="quote-column-head"><span>01 PACKAGE & OPTION</span><h3>필요한 작업을 골라주세요</h3><p>기존 상품과 추가 옵션을 원하는 만큼 선택할 수 있어요.</p></header>`;
+        rightColumn.innerHTML = `
+          <header class="quote-column-head"><span>02 REQUEST DETAILS</span><h3>상담에 필요한 내용을 적어주세요</h3><p>작성 내용은 신청서 복사 버튼으로 한 번에 정리됩니다.</p></header>`;
+
+        originalFields.forEach((field) => {
+          const belongsLeft =
+            field.matches("fieldset, .selected-box, .popup-select-wrap") ||
+            field.querySelector("#discountSelect");
+          (belongsLeft ? leftColumn : rightColumn).append(field);
+        });
+
+        const priceGuide = document.getElementById("applicationPriceGuide");
+        if (priceGuide) {
+          leftColumn.insertBefore(priceGuide, leftColumn.children[1] || null);
+        }
+        [".estimate", ".form-actions", ".copy-preview", ".copy-status"].forEach(
+          (selector) => {
+            const element = applicationSection?.querySelector(selector);
+            if (element) rightColumn.append(element);
+          },
+        );
+        applicationForm.classList.add("quote-layout");
+        applicationForm.append(leftColumn, rightColumn);
+      }
+
       const reveals = document.querySelectorAll(".reveal");
       const motionItems = document.querySelectorAll(
         ".mini, .step, .price-item, .partner-card, .sample-category, .public-adopt-card, .option-box, .faq-item, .application-price-row",
