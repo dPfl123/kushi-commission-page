@@ -655,6 +655,21 @@ const form = document.getElementById("commissionForm");
           (belongsLeft ? leftColumn : rightColumn).append(field);
         });
 
+        const rightColumnOrder = [
+          rightColumn.querySelector("#appName")?.closest("label"),
+          rightColumn.querySelector("#appLink")?.closest("label"),
+          rightColumn.querySelector("#appStyle")?.closest("label"),
+          lensDetails,
+          rightColumn.querySelector("#appDeadline")?.closest("label"),
+          rightColumn.querySelector("#appEtc")?.closest("label"),
+          rightColumn.querySelector("#usageMultiplierSelect")?.closest("label"),
+          rightColumn.querySelector("#discountSelect")?.closest("label"),
+          rightColumn.querySelector("#selectedProducts")?.closest(".selected-box"),
+        ];
+        rightColumnOrder.forEach((element) => {
+          if (element) rightColumn.append(element);
+        });
+
         [".estimate", ".form-actions", ".copy-preview", ".copy-status"].forEach(
           (selector) => {
             const element = applicationSection?.querySelector(selector);
