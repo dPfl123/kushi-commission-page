@@ -12,16 +12,17 @@ const form = document.getElementById("commissionForm");
       }
       document.getElementById("appUse")?.closest("label")?.remove();
 
-      const usageOptions = document.createElement("fieldset");
-      usageOptions.className = "option-box usage-option-box";
+      const usageOptions = document.createElement("label");
+      usageOptions.className = "popup-select-wrap usage-select-wrap";
       usageOptions.innerHTML = `
-        <legend>용도 · 한 개 선택</legend>
-        <div class="usage-choice-grid">
-          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="상업용|0" data-multiplier="2"><span><b>상업용</b><small>×2</small></span></label>
-          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="비상업용|0" data-multiplier="1"><span><b>비상업용</b><small>×0 · 추가 배수 없음</small></span></label>
-          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="저작권 양도|0" data-multiplier="2"><span><b>저작권 양도</b><small>×2</small></span></label>
-          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="상업용 + 저작권 양도|0" data-multiplier="3"><span><b>상업용 + 저작권 양도</b><small>×3</small></span></label>
-        </div>`;
+        <span>용도 · 눌러서 한 개 선택</span>
+        <select class="popup-select" id="usageMultiplierSelect" name="usageMultiplier">
+          <option value="" data-multiplier="1">선택 안 함</option>
+          <option value="상업용|0" data-multiplier="2">상업용 ×2</option>
+          <option value="비상업용|0" data-multiplier="1">비상업용 ×0 · 추가 배수 없음</option>
+          <option value="저작권 양도|0" data-multiplier="2">저작권 양도 ×2</option>
+          <option value="상업용 + 저작권 양도|0" data-multiplier="3">상업용 + 저작권 양도 ×3</option>
+        </select>`;
       form.insertBefore(usageOptions, lensDetails);
       const won = (n) => Math.max(0, n).toLocaleString("ko-KR") + "원";
       const productGroups = [
@@ -47,6 +48,13 @@ const form = document.getElementById("commissionForm");
               return [{ name, price: Number(price), input: discountSelect }];
             })()
           : [];
+        const usageSelect = document.getElementById("usageMultiplierSelect");
+        const usage = usageSelect?.value
+          ? (() => {
+              const [name, price] = usageSelect.value.split("|");
+              return [{ name, price: Number(price), input: usageSelect }];
+            })()
+          : [];
         const count = Number(
           confirmCount.value || confirmCount.textContent || 0,
         );
@@ -64,7 +72,7 @@ const form = document.getElementById("commissionForm");
           ...selected('input[name="setProduct"]'),
           ...selected('input[name="singleProduct"]'),
           ...selected('input[name="extra"]'),
-          ...selected('input[name="usageMultiplier"]'),
+          ...usage,
           ...confirmations,
           ...discount,
         ];
@@ -101,27 +109,13 @@ const form = document.getElementById("commissionForm");
       function calculate() {
         const items = allSelected();
         const baseTotal = items.reduce((sum, item) => sum + item.price, 0);
-        const usageInput = document.querySelector(
-          'input[name="usageMultiplier"]:checked',
+        const usageInput = document.getElementById("usageMultiplierSelect");
+        const multiplier = Number(
+          usageInput?.selectedOptions?.[0]?.dataset.multiplier || 1,
         );
-        const multiplier = Number(usageInput?.dataset.multiplier || 1);
         const total = Math.max(0, baseTotal) * multiplier;
         document.getElementById("estimatePrice").textContent = won(total);
-        const estimate = document.querySelector("#application .estimate");
-        let formula = document.getElementById("estimateFormula");
-        if (!formula && estimate) {
-          formula = document.createElement("small");
-          formula.id = "estimateFormula";
-          estimate.querySelector("strong")?.before(formula);
-        }
-        if (formula) {
-          const usageName = usageInput?.value.split("|")[0];
-          formula.textContent = usageInput
-            ? usageName === "비상업용"
-              ? `${won(baseTotal)} · 추가 ×0`
-              : `${won(baseTotal)} × ${multiplier}`
-            : `${won(baseTotal)} · 용도 미선택`;
-        }
+        document.getElementById("estimateFormula")?.remove();
         const hasLensProduct =
           selected('input[name="setProduct"]').length > 0 ||
           selected('input[name="singleProduct"]').some((item) =>
@@ -166,11 +160,6 @@ const form = document.getElementById("commissionForm");
           )
             sets.forEach((item) => (item.input.checked = false));
           else if (sets.length) input.checked = false;
-        }
-        if (input.name === "usageMultiplier") {
-          selected('input[name="usageMultiplier"]').forEach((item) => {
-            if (item.input !== input) item.input.checked = false;
-          });
         }
         calculate();
       });
@@ -222,9 +211,8 @@ const form = document.getElementById("commissionForm");
                   allSelected().reduce((sum, item) => sum + item.price, 0),
                 ) *
                 Number(
-                  document.querySelector(
-                    'input[name="usageMultiplier"]:checked',
-                  )?.dataset.multiplier || 1,
+                  document.getElementById("usageMultiplierSelect")
+                    ?.selectedOptions?.[0]?.dataset.multiplier || 1,
                 ),
             };
         const consults = result.items.filter(
@@ -663,8 +651,7 @@ const form = document.getElementById("commissionForm");
 
         originalFields.forEach((field) => {
           const belongsLeft =
-            field.matches("fieldset") &&
-            !field.matches(".usage-option-box");
+            field.matches("fieldset");
           (belongsLeft ? leftColumn : rightColumn).append(field);
         });
 

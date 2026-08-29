@@ -1224,3 +1224,12 @@
 #top #estimateFormula{display:block;flex:1;margin:0 12px;color:var(--dark-text)!important;font-size:12px!important;text-align:right;line-height:1.5}
 #top .quote-column-details .selected-box,#top .quote-column-details .popup-select-wrap{order:0}
 @media(max-width:520px){#top .usage-choice-grid{grid-template-columns:1fr}#top .quote-column-details .estimate{align-items:flex-start!important;flex-direction:column!important;gap:6px}#top #estimateFormula{margin:0!important;text-align:left!important}}
+
+/* Dropdown usage selector and final-price-only estimate */
+#top .usage-select-wrap{display:grid!important;width:100%!important;gap:8px!important;padding:15px!important;border:1px solid var(--baby-pink)!important;border-radius:18px!important;background:linear-gradient(145deg,#fff,rgba(255,216,236,.35))!important;box-sizing:border-box!important}
+#top .usage-select-wrap>span{font-size:13px!important;font-weight:700!important}
+#top .usage-select-wrap select{width:100%!important;min-height:50px!important;padding:0 44px 0 15px!important;border:1px solid var(--baby-pink)!important;border-radius:15px!important;color:var(--dark-text)!important;background:#fff!important;font-size:14px!important;font-weight:700!important;box-sizing:border-box!important}
+#top #estimateFormula{display:none!important}
+#top .quote-column-details .estimate{justify-content:space-between!important}
+#top .quote-column-details .estimate>span{font-size:15px!important;font-weight:700!important}
+#top .quote-column-details .estimate strong{margin-left:auto!important;font-size:31px!important}
