@@ -1174,3 +1174,14 @@
 #top .partner-tags span{max-width:100%;box-sizing:border-box;font-weight:700!important;overflow-wrap:anywhere}
 #top .partner-link{max-width:100%!important;box-sizing:border-box!important;font-weight:700!important;white-space:normal!important}
 @media(max-width:760px){#top .partner-card{grid-template-columns:1fr!important;padding:14px!important}#top .partner-card .editable-copy{gap:8px!important}#top .partner-card .static-copy{font-size:13px!important}}
+
+/* Readable small type across the public page */
+#top{font-size:15px!important;line-height:1.85!important}
+#top p,#top li,#top label,#top .static-copy,#top .faq-answer{font-size:max(13px,1em)!important;line-height:1.8!important}
+#top .kicker,#top .heading span,#top .creator-greeting,#top .application-price-title span,#top .work-sale-info span{font-size:12px!important;line-height:1.65!important}
+#top .chip,#top .partner-tags span,#top .option-pill span,#top .selected-chip,#top .work-status,#top .gallery-counter,#top .partner-link{font-size:12px!important;line-height:1.55!important}
+#top .price-item span,#top .price-item small,#top .public-copy p,#top .public-adopt-copy p,#top .application-price-row,#top .field span,#top legend{font-size:13px!important;line-height:1.7!important}
+#top .kusi-menu a,#top .nav a{font-size:13px!important}
+#top .partner-portrait.profile-photo-slot::after{font-size:10px!important}
+#top input,#top textarea,#top select,#top button{font-size:13px!important}
+@media(max-width:560px){#top{font-size:14px!important}#top p,#top li,#top label,#top .static-copy,#top .faq-answer{font-size:13px!important}#top .heading span{font-size:11px!important}}
