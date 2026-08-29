@@ -3,6 +3,26 @@ const form = document.getElementById("commissionForm");
       const copyOutput = document.getElementById("copyOutput");
       const copyStatus = document.getElementById("copyStatus");
       const confirmCount = document.getElementById("confirmCount");
+      const nicknameInput = document.getElementById("appName");
+      if (nicknameInput) {
+        const nicknameLabel = nicknameInput.closest("label");
+        const nicknameTitle = nicknameLabel?.querySelector("span");
+        if (nicknameTitle) nicknameTitle.textContent = "닉네임";
+        nicknameInput.placeholder = "닉네임을 적어주세요";
+      }
+      document.getElementById("appUse")?.closest("label")?.remove();
+
+      const usageOptions = document.createElement("fieldset");
+      usageOptions.className = "option-box usage-option-box";
+      usageOptions.innerHTML = `
+        <legend>용도 · 한 개 선택</legend>
+        <div class="usage-choice-grid">
+          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="상업용|0" data-multiplier="2"><span><b>상업용</b><small>×2</small></span></label>
+          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="비상업용|0" data-multiplier="1"><span><b>비상업용</b><small>×0 · 추가 배수 없음</small></span></label>
+          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="저작권 양도|0" data-multiplier="2"><span><b>저작권 양도</b><small>×2</small></span></label>
+          <label class="option-pill"><input type="checkbox" name="usageMultiplier" value="상업용 + 저작권 양도|0" data-multiplier="3"><span><b>상업용 + 저작권 양도</b><small>×3</small></span></label>
+        </div>`;
+      form.insertBefore(usageOptions, lensDetails);
       const won = (n) => Math.max(0, n).toLocaleString("ko-KR") + "원";
       const productGroups = [
         "setProduct",
@@ -44,6 +64,7 @@ const form = document.getElementById("commissionForm");
           ...selected('input[name="setProduct"]'),
           ...selected('input[name="singleProduct"]'),
           ...selected('input[name="extra"]'),
+          ...selected('input[name="usageMultiplier"]'),
           ...confirmations,
           ...discount,
         ];
@@ -79,14 +100,33 @@ const form = document.getElementById("commissionForm");
       }
       function calculate() {
         const items = allSelected();
-        const total = items.reduce((sum, item) => sum + item.price, 0);
-        document.getElementById("estimatePrice").textContent = won(total);
-        const hasLensProduct = items.some(
-          (item) =>
-            (item.input.name === "setProduct" ||
-              item.input.name === "singleProduct") &&
-            item.name.includes("렌즈"),
+        const baseTotal = items.reduce((sum, item) => sum + item.price, 0);
+        const usageInput = document.querySelector(
+          'input[name="usageMultiplier"]:checked',
         );
+        const multiplier = Number(usageInput?.dataset.multiplier || 1);
+        const total = Math.max(0, baseTotal) * multiplier;
+        document.getElementById("estimatePrice").textContent = won(total);
+        const estimate = document.querySelector("#application .estimate");
+        let formula = document.getElementById("estimateFormula");
+        if (!formula && estimate) {
+          formula = document.createElement("small");
+          formula.id = "estimateFormula";
+          estimate.querySelector("strong")?.before(formula);
+        }
+        if (formula) {
+          const usageName = usageInput?.value.split("|")[0];
+          formula.textContent = usageInput
+            ? usageName === "비상업용"
+              ? `${won(baseTotal)} · 추가 ×0`
+              : `${won(baseTotal)} × ${multiplier}`
+            : `${won(baseTotal)} · 용도 미선택`;
+        }
+        const hasLensProduct =
+          selected('input[name="setProduct"]').length > 0 ||
+          selected('input[name="singleProduct"]').some((item) =>
+            item.name.includes("렌즈"),
+          );
         lensDetails.hidden = !hasLensProduct;
         document.querySelectorAll(".option-pill input").forEach((input) => {
           const pill = input.nextElementSibling;
@@ -126,6 +166,11 @@ const form = document.getElementById("commissionForm");
           )
             sets.forEach((item) => (item.input.checked = false));
           else if (sets.length) input.checked = false;
+        }
+        if (input.name === "usageMultiplier") {
+          selected('input[name="usageMultiplier"]').forEach((item) => {
+            if (item.input !== input) item.input.checked = false;
+          });
         }
         calculate();
       });
@@ -171,10 +216,16 @@ const form = document.getElementById("commissionForm");
           ? calculate()
           : {
               items: allSelected(),
-              total: Math.max(
-                0,
-                allSelected().reduce((sum, item) => sum + item.price, 0),
-              ),
+              total:
+                Math.max(
+                  0,
+                  allSelected().reduce((sum, item) => sum + item.price, 0),
+                ) *
+                Number(
+                  document.querySelector(
+                    'input[name="usageMultiplier"]:checked',
+                  )?.dataset.multiplier || 1,
+                ),
             };
         const consults = result.items.filter(
           (item) => item.input.name === "consult",
@@ -189,7 +240,10 @@ const form = document.getElementById("commissionForm");
         const lensLine = lensDetails.hidden
           ? ""
           : `\n렌즈 필수 요소 : ${value("appLens")}`;
-        return `[3D 버츄얼 얼굴 · 렌즈 원화 신청서]\n\n닉네임 / 입금자명 : ${value("appName")}\n캐릭터 자료 링크 : ${value("appLink")}\n\n상담 선택\n${consults.length ? consults.map(line).join("\n") : "· 선택 없음"}\n\n신청 상품 및 옵션\n${products.length ? products.map(line).join("\n") : "· 선택 없음"}\n\n예상 견적 : ${won(result.total)}\n희망 마감일 : ${value("appDeadline")}\n사용 용도 : ${value("appUse")}\n원하는 분위기·참고 자료 : ${value("appStyle")}${lensLine}\n기타 요청사항 : ${value("appEtc")}`;
+        const usage = result.items.find(
+          (item) => item.input.name === "usageMultiplier",
+        );
+        return `[3D 버츄얼 얼굴 · 렌즈 원화 신청서]\n\n닉네임 : ${value("appName")}\n캐릭터 자료 링크 : ${value("appLink")}\n\n상담 선택\n${consults.length ? consults.map(line).join("\n") : "· 선택 없음"}\n\n신청 상품 및 옵션\n${products.length ? products.map(line).join("\n") : "· 선택 없음"}\n\n용도 : ${usage ? usage.name : "선택 없음"}\n예상 견적 : ${won(result.total)}\n희망 마감일 : ${value("appDeadline")}\n원하는 분위기·참고 자료 : ${value("appStyle")}${lensLine}\n기타 요청사항 : ${value("appEtc")}`;
       }
       async function copyApplication() {
         const text = applicationText();
@@ -609,8 +663,8 @@ const form = document.getElementById("commissionForm");
 
         originalFields.forEach((field) => {
           const belongsLeft =
-            field.matches("fieldset, .selected-box, .popup-select-wrap") ||
-            field.querySelector("#discountSelect");
+            field.matches("fieldset") &&
+            !field.matches(".usage-option-box");
           (belongsLeft ? leftColumn : rightColumn).append(field);
         });
 
