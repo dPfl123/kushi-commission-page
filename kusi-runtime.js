@@ -593,23 +593,7 @@ const form = document.getElementById("commissionForm");
       });
 
       const applicationForm = document.getElementById("commissionForm");
-      if (applicationForm && !document.getElementById("applicationPriceGuide")) {
-        const priceGuide = document.createElement("div");
-        priceGuide.id = "applicationPriceGuide";
-        priceGuide.className = "application-price-guide";
-        priceGuide.innerHTML = `
-          <div class="application-price-title"><b>신청 가격표</b><span>선택한 금액은 아래 예상 견적에 자동 합산됩니다.</span></div>
-          <div class="application-price-row"><span>기본 세트</span><b>고급 헤드 원화 + 렌즈</b><strong>80,000원</strong></div>
-          <div class="application-price-row"><span>기본 세트</span><b>오마카세 헤드 원화 + 렌즈</b><strong>90,000원</strong></div>
-          <div class="application-price-row"><span>단일 구성</span><b>고급 헤드 원화 PNG</b><strong>50,000원</strong></div>
-          <div class="application-price-row"><span>단일 구성</span><b>오마카세 헤드 원화 PNG</b><strong>55,000원</strong></div>
-          <div class="application-price-row"><span>단일 구성</span><b>렌즈 PSD</b><strong>50,000원</strong></div>
-          <div class="application-price-row"><span>단일 구성</span><b>렌즈 PNG</b><strong>40,000원</strong></div>
-          <div class="application-price-row"><span>추가금</span><b>컨펌 추가</b><strong>회당 3,000원</strong></div>
-          <div class="application-price-row"><span>추가금</span><b>퀄리티 업</b><strong>20,000원</strong></div>
-          <div class="application-price-row"><span>비공개</span><b>일주일 / 한 달 / 영구</b><strong>5,000 / 10,000 / 50,000원</strong></div>`;
-        applicationForm.before(priceGuide);
-      }
+      document.getElementById("applicationPriceGuide")?.remove();
 
       if (applicationForm && !applicationForm.classList.contains("quote-layout")) {
         const applicationSection = applicationForm.closest("#application");
@@ -630,10 +614,6 @@ const form = document.getElementById("commissionForm");
           (belongsLeft ? leftColumn : rightColumn).append(field);
         });
 
-        const priceGuide = document.getElementById("applicationPriceGuide");
-        if (priceGuide) {
-          leftColumn.insertBefore(priceGuide, leftColumn.children[1] || null);
-        }
         [".estimate", ".form-actions", ".copy-preview", ".copy-status"].forEach(
           (selector) => {
             const element = applicationSection?.querySelector(selector);
