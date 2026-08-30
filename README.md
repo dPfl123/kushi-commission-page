@@ -23,7 +23,7 @@ GitHub Pages 배포가 완료된 뒤 `ARTMUG-PASTE.html`의 두 줄을 아트머
 
 ```html
 <div id="kusiCommissionMount" style="display:block;width:100%;margin:0;padding:0"></div>
-<script src="https://dpfl123.github.io/kushi-commission-page/artmug-loader.js?v=20260829-35"></script>
+<script src="https://dpfl123.github.io/kushi-commission-page/artmug-loader.js?v=20260830-36"></script>
 ```
 
 실제 화면은 GitHub에서 관리되므로 이후에는 저장소 파일만 업데이트하면 됩니다. 아트머그 코드는 버전 번호를 변경할 때만 다시 교체하면 됩니다.
@@ -34,3 +34,4 @@ GitHub Pages 배포가 완료된 뒤 `ARTMUG-PASTE.html`의 두 줄을 아트머
 - 작가 정보 편집 입력란 없음
 - 신청서 견적 계산과 복사 기능만 유지
 - 외부 서버로 신청 내용을 전송하거나 저장하지 않음
+
