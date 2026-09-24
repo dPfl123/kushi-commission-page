@@ -538,6 +538,7 @@ const form = document.getElementById("commissionForm");
               grid.style.gridTemplateColumns =
                 "repeat(2, minmax(0, 1fr))";
           });
+          if (partnerGrid) partnerGrid.style.gridTemplateColumns = "1fr";
           if (formGrid) formGrid.style.gridTemplateColumns = "1fr 1fr";
           if (consultGrid)
             consultGrid.style.gridTemplateColumns =
@@ -554,13 +555,10 @@ const form = document.getElementById("commissionForm");
 
       applyKusiResponsiveLayout();
       window.addEventListener("resize", applyKusiResponsiveLayout);
-      if (discountSelect?.options?.length >= 3) {
+      if (discountSelect?.options?.length >= 2) {
         discountSelect.options[1].value = "푸돌이님 원화 추가 할인|-10000";
         discountSelect.options[1].textContent =
           "푸돌이님 · 원화 추가 10,000원 할인";
-        discountSelect.options[2].value = "노랭꼬님 원화 할인|-20000";
-        discountSelect.options[2].textContent =
-          "노랭꼬님 · Kusi 원화 20,000원 할인";
       }
       calculate();
 
@@ -580,7 +578,6 @@ const form = document.getElementById("commissionForm");
 
       const partnerTags = [
         ["#쿠시돌이Pick", "#3D버츄얼", "#퀄리티"],
-        ["#친절상담", "#3D버츄얼", "#퀄리티"],
       ];
       document.querySelectorAll(".partner-card").forEach((card, index) => {
         const portrait = card.querySelector(".partner-portrait");
@@ -593,10 +590,6 @@ const form = document.getElementById("commissionForm");
           detail.innerHTML =
             "푸돌이님 추가금에 원화 추가 시 <strong>10,000원 할인</strong>";
         }
-        if (detail && index === 1) {
-          detail.innerHTML =
-            "노랭꼬 작가 <strong>데뷔세트 20,000원 할인</strong> · 쿠시돌이 작가 <strong>원화 20,000원 할인</strong>";
-        }
         if (index === 0) {
           const image = document.createElement("img");
           image.src = "assets/partners/poodol.png";
@@ -604,25 +597,6 @@ const form = document.getElementById("commissionForm");
           portrait.replaceChildren(image);
           portrait.classList.add("has-photo");
           portrait.title = "푸돌이님 프로필";
-        }
-        if (index === 1) {
-          const image = document.createElement("img");
-          image.src = "assets/partners/noraengggo.png";
-          image.alt = "노랭꼬님 프로필";
-          portrait.replaceChildren(image);
-          portrait.classList.add("has-photo");
-          portrait.title = "노랭꼬님 프로필";
-
-          const oldLink = copy?.querySelector(".partner-link");
-          if (oldLink) {
-            const activeLink = oldLink.cloneNode(true);
-            activeLink.href = "https://artmug.kr/index.php?channel=view&uid=49397";
-            activeLink.target = "_blank";
-            activeLink.rel = "noopener noreferrer";
-            activeLink.removeAttribute("aria-disabled");
-            activeLink.title = "노랭꼬님 아트머그 페이지 열기";
-            oldLink.replaceWith(activeLink);
-          }
         }
         if (copy && partnerTags[index]) {
           const tags = document.createElement("div");
