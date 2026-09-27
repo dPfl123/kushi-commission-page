@@ -567,7 +567,7 @@ const form = document.getElementById("commissionForm");
         creatorCard.classList.add("kusi-artist-intro");
         creatorCard.innerHTML = `
           <div class="creator-visual" aria-label="Kusi 대표 이미지 영역">
-            <img src="assets/partners/kusi-profile.png" alt="Kusi 작가 프로필">
+            <img src="assets/partners/kusi-profile.jpg" alt="Kusi 작가 프로필">
           </div>
           <div class="creator-intro-copy">
             <p class="creator-greeting">HELLO, I'M</p>
